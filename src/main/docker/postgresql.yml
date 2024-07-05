@@ -4,7 +4,7 @@ services:
     image: postgres:16.2
 
     environment:
-      - POSTGRES_USER=marek
+      - POSTGRES_USER=kyotu
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:

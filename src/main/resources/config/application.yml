@@ -19,8 +19,8 @@ spring:
       auto-commit: false
     password: ''
     driver-class-name: org.postgresql.Driver
-    username: marek
-    url: jdbc:postgresql://localhost:5432/marek
+    username: kyotu
+    url: jdbc:postgresql://localhost:5432/kyotu
     type: com.zaxxer.hikari.HikariDataSource
   batch:
     job:
