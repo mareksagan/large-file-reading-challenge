@@ -4,20 +4,20 @@ import java.util.Map;
 
 public abstract class AssertionException extends RuntimeException {
 
-  private final String field;
+    private final String field;
 
-  protected AssertionException(String field, String message) {
-    super(message);
-    this.field = field;
-  }
+    protected AssertionException(String field, String message) {
+        super(message);
+        this.field = field;
+    }
 
-  public abstract AssertionErrorType type();
+    public abstract AssertionErrorType type();
 
-  public String field() {
-    return field;
-  }
+    public String field() {
+        return field;
+    }
 
-  public Map<String, String> parameters() {
-    return Map.of();
-  }
+    public Map<String, String> parameters() {
+        return Map.of();
+    }
 }

@@ -19,7 +19,6 @@ public class AverageTemperature {
         this.averageTemperature = averageTemperature;
     }
 
-
     public Integer getYear() {
         return year;
     }
@@ -42,7 +41,7 @@ public class AverageTemperature {
             if (null == value) {
                 jgen.writeNull();
             } else {
-                // Only one decimal point serialization , ".#" format
+                // Only first decimal place serialization , ".#" format
                 BigDecimal bd = new BigDecimal(value).setScale(1, RoundingMode.FLOOR);
                 jgen.writeNumber(bd.doubleValue());
             }

@@ -1,6 +1,5 @@
 package com.recruitment.temperatures.models;
 
-
 public class TemperatureModel {
     private String city;
     private String date;

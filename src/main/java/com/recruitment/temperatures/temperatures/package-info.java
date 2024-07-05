@@ -1,8 +1,6 @@
 /**
- * This module is delivered to the client inorder to get information for temperatures
- * <p>
- * This module explores spring web & jpa dependencies inorder to deliver the temperatures related APIs
- * </p>
+ * This module is there for the client in order to get information about temperatures.
+ * It utilizes Spring Web & JPA dependencies in order to deliver the temperatures related API.
  *
  */
 package com.recruitment.temperatures.temperatures;

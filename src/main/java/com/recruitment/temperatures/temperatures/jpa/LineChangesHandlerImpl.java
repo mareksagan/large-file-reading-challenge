@@ -5,9 +5,6 @@ import com.recruitment.temperatures.models.GitDiffLine;
 import com.recruitment.temperatures.models.TemperatureCreator;
 import org.springframework.stereotype.Component;
 
-
-
-
 @Component
 public class LineChangesHandlerImpl implements LineChangesHandler {
     private final TemperatureRepository temperatureRepository;

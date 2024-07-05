@@ -27,7 +27,7 @@ import javax.sql.DataSource;
 import java.text.SimpleDateFormat;
 
 /**
- * Defines batch Job for the initial csv sync
+ * Defines batch job for the initial CSV sync
  */
 @Configuration
 public class CSVParsingConfiguration {
@@ -66,6 +66,7 @@ public class CSVParsingConfiguration {
 
         return defaultLineMapper;
     }
+
     @Bean
     public JdbcBatchItemWriter<Temperature> writer() {
         JdbcBatchItemWriter<Temperature> writer = new JdbcBatchItemWriter<>();
@@ -75,6 +76,7 @@ public class CSVParsingConfiguration {
         writer.setDataSource(dataSource);
         return writer;
     }
+
     @Bean
     public Job sampleJob(JobRepository jobRepository, Step sampleStep) {
         return new JobBuilder("CSVLoadJob", jobRepository)
@@ -82,15 +84,17 @@ public class CSVParsingConfiguration {
                 .start(sampleStep)
                 .build();
     }
+
     @Bean
     public ItemProcessor<TemperatureModel, Temperature> processor() {
         return val -> new Temperature(temperatureRepository.getNextSequence(), val.getCity(), simpleDateFormat.parse(val.getDate()), Double.parseDouble(val.getValue()));
     }
+
     @Bean
     public Step importData(JobRepository jobRepository, PlatformTransactionManager platformTransactionManager) {
-        return new StepBuilder("CSVLoadStep",jobRepository)
+        return new StepBuilder("CSVLoadStep", jobRepository)
                 .allowStartIfComplete(true)
-                .<TemperatureModel,Temperature> chunk(100,platformTransactionManager)
+                .<TemperatureModel, Temperature>chunk(100, platformTransactionManager)
                 .reader(reader())
                 .processor(processor())
                 .writer(writer())

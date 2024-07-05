@@ -23,14 +23,17 @@ public class Temperature {
         this.date = date;
         this.value = value;
     }
+
     public Temperature(String city, Date date, Double value) {
         this.city = city;
         this.date = date;
         this.value = value;
     }
-    public Temperature(){
+
+    public Temperature() {
 
     }
+
     public Long getId() {
         return id;
     }
