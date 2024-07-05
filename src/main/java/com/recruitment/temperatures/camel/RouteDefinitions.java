@@ -11,8 +11,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.List;
+
 /**
- * Apache Camel Route Configuration for File System change detection
+ * Apache Camel Route Configuration for filesystem change detection
  */
 @Component
 public class RouteDefinitions extends RouteBuilder {
@@ -26,6 +27,7 @@ public class RouteDefinitions extends RouteBuilder {
         this.recruitmentChallengeCSVProperties = recruitmentChallengeCSVProperties;
         this.linesChangeHandler = linesChangeHandler;
     }
+
     /**
      * Listener on MODIFY events for the CSV file
      */

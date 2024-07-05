@@ -15,7 +15,8 @@ public interface GitRepository {
     List<String> headEdits(FileName fileName) throws IOException;
 
     List<String> headEdits() throws IOException;
-    ObjectId latestObjectId() throws IOException;
-    Status status() throws GitAPIException;
 
+    ObjectId latestObjectId() throws IOException;
+
+    Status status() throws GitAPIException;
 }

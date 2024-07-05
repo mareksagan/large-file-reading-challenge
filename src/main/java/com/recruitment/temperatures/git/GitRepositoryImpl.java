@@ -2,7 +2,6 @@ package com.recruitment.temperatures.git;
 
 import com.recruitment.temperatures.models.CommitMessage;
 import com.recruitment.temperatures.models.FileName;
-import jakarta.annotation.PostConstruct;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -20,10 +19,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+
 /**
  * Builds API Layer Integration with Git
  */
-
 @Component
 public class GitRepositoryImpl implements GitRepository {
     private final Git git;
@@ -43,6 +42,7 @@ public class GitRepositoryImpl implements GitRepository {
     public List<String> headEdits(FileName fileName) throws IOException {
         return headEdits(val -> val.getOldPath().equals(fileName.fileName()) && val.getNewPath().equals(fileName.fileName()));
     }
+
     @Override
     public List<String> headEdits() throws IOException {
         return headEdits(val -> true);
@@ -60,13 +60,14 @@ public class GitRepositoryImpl implements GitRepository {
 
     /**
      * Returns added and deleted lines between latest two commits from Git HEAD
+     *
      * @param predicate Conditional check for one diff between commits.
      */
     private List<String> headEdits(Predicate<DiffEntry> predicate) throws IOException {
         Repository repository = git.getRepository();
-        //To obtain the tree of the parent of the HEAD commit
+        // Obtaining the tree of the parent of the HEAD commit
         ObjectId oldHead = repository.resolve("HEAD~1^{tree}");
-        //To obtain the tree of the head commit
+        // Obtaining the tree of the head commit
         ObjectId newHead = repository.resolve("HEAD^{tree}");
         ObjectReader reader = repository.newObjectReader();
         CanonicalTreeParser oldTreeIter = new CanonicalTreeParser();

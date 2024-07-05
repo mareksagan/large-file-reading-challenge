@@ -1,6 +1,5 @@
-x# Large file reading challenge
+# Large file reading challenge
 
-Welcome in the recruitment challenge.
 Write an application that, at the endpoint specified by you, returns the yearly average temperatures for a given city in the format array of objects with the following fields: year, averageTemperature.
 
 ## Assumptions
@@ -34,33 +33,28 @@ Write an application that, at the endpoint specified by you, returns the yearly 
 ## Requirements
 - Source code should be placed in a public repository (e.g. GitHub, GitLab, Bitbucket)
 
-## Tips
-Feel free you use any libraries and technologies you want. You can use external services. We are interested in your approach and the way you solve the problem. We are also interested in your knowledge of the technologies you use.
-
-
-
-
-
-
 ## Proposed Solution
 
-### I- Understanding of the requirement :
+### Understanding the requirements
 
-As part of the implementation, our input data entry will be in CSV file format, and our server needs to track runtime changes to the file. This will include:
+As part of the implementation, our input data entry will be in CSV file format, and our server needs to be able to track runtime changes done to the file.
 
-- Collecting data from the file and storing it in a persistence server (DB)
+This will include:
+
+- Collecting data from the file and storing it in a database
 - Triggering runtime changes in real-time to update the data
 - Developing business logic for querying the appropriate results for the user
 - Adding tests for global business rules to ensure comprehensive code coverage
 
-### II- Proposed Solution :
+### Proposed Solution
 
-The following diagram presents the proposed technical architecture of the solution. It is composed of the following components:
+The following diagram represents the proposed technical architecture of the solution. It consists of the following components:
 
 - **Apache Camel**: Acting as an integration framework, Apache Camel will integrate the file-watch connector to sync CSV file updates.
-- **Spring Batch**: Will persist in batch and load the content of the csv file in first server setup
-- **JGit**: Will be used to calculate the diff between the changes reflected into the CSV file
-- **Spring Boot**: The global application will be wrapped in a Spring Boot application, enabling the definition of APIs with web dependencies.
-- **Database**: We propose using PostgreSQL to manage data, regardless of the dataset size. PostgreSQL is free, open-source, and highly extensible. It supports features for managing large volumes of data, such as partitioning for big tables. Special PostgreSQL modules will be installed to boost database performance, and the server will be hosted in a Docker container.
-- **Testing**: We need to define sample of tests based on JHipster Lite prototypes, including dependencies such as JUnit, Mockito, and Cucumber could be useful.!
+- **Spring Batch**: It will persist data in batch and load the content of the CSV file during application startup.
+- **JGit**: It will be used to calculate the difference between the changes done to the CSV file.
+- **Spring Boot**: The application will be wrapped in a Spring Boot application, enabling the definition of APIs with web dependencies.
+- **Database**: PostgreSQL for managing data, regardless of the dataset size. PostgreSQL is free, open-source, and highly extensible. It supports features for managing large volumes of data, such as partitioning for big tables. Special PostgreSQL modules will be installed to boost database performance, and the server will be hosted in a Docker container.
+- **Testing**: Unit/integration tests based on JHipster Lite prototypes, including dependencies such as JUnit, Mockito, and Cucumber.
+
 ![img.png](documentation/arch.png)

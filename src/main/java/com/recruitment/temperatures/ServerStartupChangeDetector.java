@@ -15,11 +15,11 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Class used to detect if there were any file changes that wasn't in sync when startup
+ * Class used to detect if there were any file changes that wasn't in sync during startup
  */
 @Component
 public class ServerStartupChangeDetector {
-    private static final String CHANGE_DETECTION_COMMIT_MESSAGE = "Server startup Change Detection";
+    private static final String CHANGE_DETECTION_COMMIT_MESSAGE = "Server startup (Change Detection)";
     private final GitRepository gitRepository;
     private final RecruitmentChallengeCSVProperties recruitmentChallengeCSVProperties;
     private final LineChangesHandler lineChangesHandler;

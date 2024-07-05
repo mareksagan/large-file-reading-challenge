@@ -6,11 +6,13 @@ import com.recruitment.temperatures.models.FileName;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.assertj.core.util.Files;
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -44,8 +46,8 @@ public class GitRepositoryTest {
     void headEditTests() throws IOException, GitAPIException {
         String fileName = "dummy.csv";
         File csv = directory.resolve(fileName).toFile();
-        String firstLine = "One line has been added";
-        String secondLine = "Second Line has been added";
+        String firstLine = "First line has been added";
+        String secondLine = "Second line has been added";
         csv.createNewFile();
         try (FileWriter writer = new FileWriter(csv)) {
             writer.append(firstLine);
