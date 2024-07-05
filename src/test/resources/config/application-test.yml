@@ -7,7 +7,7 @@ spring:
     username: jhipsterSampleApplication
     hikari:
       maximum-pool-size: 2
-    url: jdbc:tc:postgresql:16.2:///marek?TC_TMPFS=/testtmpfs:rw
+    url: jdbc:tc:postgresql:16.2:///kyotu?TC_TMPFS=/testtmpfs:rw
     password: ''
   batch:
     job:
