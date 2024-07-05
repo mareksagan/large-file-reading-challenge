@@ -1,4 +1,4 @@
-package com.recruitment.temperatures.temperatures;
+package com.recruitment.temperatures.temperatures.jpa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

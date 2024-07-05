@@ -3,7 +3,7 @@ package com.recruitment.temperatures.camel;
 import com.recruitment.temperatures.RecruitmentChallengeCSVProperties;
 import com.recruitment.temperatures.git.GitRepository;
 import com.recruitment.temperatures.models.GitDiffLine;
-import com.recruitment.temperatures.temperatures.LineChangesHandler;
+import com.recruitment.temperatures.temperatures.jpa.LineChangesHandler;
 import com.recruitment.temperatures.models.CommitMessage;
 import com.recruitment.temperatures.models.FileName;
 import org.apache.camel.builder.RouteBuilder;
@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.List;
-
+/**
+ * Apache Camel Route Configuration for File System change detection
+ */
 @Component
 public class RouteDefinitions extends RouteBuilder {
     private final GitRepository gitRepository;
@@ -24,7 +26,9 @@ public class RouteDefinitions extends RouteBuilder {
         this.recruitmentChallengeCSVProperties = recruitmentChallengeCSVProperties;
         this.linesChangeHandler = linesChangeHandler;
     }
-
+    /**
+     * Listener on MODIFY events for the CSV file
+     */
     @Override
     public void configure() {
 

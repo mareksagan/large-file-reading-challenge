@@ -4,7 +4,7 @@ import com.recruitment.temperatures.git.GitRepository;
 import com.recruitment.temperatures.models.CommitMessage;
 import com.recruitment.temperatures.models.FileName;
 import com.recruitment.temperatures.models.GitDiffLine;
-import com.recruitment.temperatures.temperatures.LineChangesHandler;
+import com.recruitment.temperatures.temperatures.jpa.LineChangesHandler;
 import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Class used to detect if there were any file changes that wasn't in sync when startup
+ */
 @Component
 public class ServerStartupChangeDetector {
     private static final String CHANGE_DETECTION_COMMIT_MESSAGE = "Server startup Change Detection";

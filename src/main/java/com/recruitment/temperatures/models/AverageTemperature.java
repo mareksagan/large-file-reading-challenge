@@ -42,6 +42,7 @@ public class AverageTemperature {
             if (null == value) {
                 jgen.writeNull();
             } else {
+                // Only one decimal point serialization , ".#" format
                 BigDecimal bd = new BigDecimal(value).setScale(1, RoundingMode.FLOOR);
                 jgen.writeNumber(bd.doubleValue());
             }

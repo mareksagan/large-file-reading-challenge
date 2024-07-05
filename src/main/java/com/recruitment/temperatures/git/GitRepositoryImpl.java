@@ -20,7 +20,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-
+/**
+ * Builds API Layer Integration with Git
+ */
 
 @Component
 public class GitRepositoryImpl implements GitRepository {
@@ -56,9 +58,15 @@ public class GitRepositoryImpl implements GitRepository {
         return git.status().call();
     }
 
+    /**
+     * Returns added and deleted lines between latest two commits from Git HEAD
+     * @param predicate Conditional check for one diff between commits.
+     */
     private List<String> headEdits(Predicate<DiffEntry> predicate) throws IOException {
         Repository repository = git.getRepository();
+        //To obtain the tree of the parent of the HEAD commit
         ObjectId oldHead = repository.resolve("HEAD~1^{tree}");
+        //To obtain the tree of the head commit
         ObjectId newHead = repository.resolve("HEAD^{tree}");
         ObjectReader reader = repository.newObjectReader();
         CanonicalTreeParser oldTreeIter = new CanonicalTreeParser();
@@ -73,6 +81,7 @@ public class GitRepositoryImpl implements GitRepository {
         for (DiffEntry entry : entries) {
             if (predicate.test(entry)) {
                 df.format(entry);
+                // Algorithm to detect real git diff and changes
                 List<String> diff = Arrays.stream(String.valueOf(byteArrayOutputStream).split("\n"))
                         .filter(val -> val.startsWith("-") || val.startsWith("+"))
                         .skip(2).toList();

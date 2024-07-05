@@ -2,8 +2,8 @@ package com.recruitment.temperatures.batch;
 
 import com.recruitment.temperatures.RecruitmentChallengeCSVProperties;
 import com.recruitment.temperatures.models.TemperatureModel;
-import com.recruitment.temperatures.temperatures.Temperature;
-import com.recruitment.temperatures.temperatures.TemperatureRepository;
+import com.recruitment.temperatures.temperatures.jpa.Temperature;
+import com.recruitment.temperatures.temperatures.jpa.TemperatureRepository;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -18,7 +18,6 @@ import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
@@ -27,6 +26,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 import java.text.SimpleDateFormat;
 
+/**
+ * Defines batch Job for the initial csv sync
+ */
 @Configuration
 public class CSVParsingConfiguration {
     private final RecruitmentChallengeCSVProperties recruitmentChallengeCSVProperties;

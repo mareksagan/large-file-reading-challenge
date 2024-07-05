@@ -3,6 +3,9 @@ package com.recruitment.temperatures;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Wrapper for CSV file configuration
+ */
 @Configuration
 @ConfigurationProperties(prefix = "recruitment.challenge.csv")
 public class RecruitmentChallengeCSVProperties {

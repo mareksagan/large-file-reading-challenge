@@ -1,9 +1,8 @@
-package com.recruitment.temperatures.temperatures;
+package com.recruitment.temperatures.temperatures.jpa;
 
 import com.recruitment.temperatures.RecruitmentChallengeCSVProperties;
 import com.recruitment.temperatures.models.GitDiffLine;
 import com.recruitment.temperatures.models.TemperatureCreator;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
