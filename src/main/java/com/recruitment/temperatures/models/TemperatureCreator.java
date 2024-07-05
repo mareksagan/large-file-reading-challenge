@@ -1,7 +1,7 @@
 package com.recruitment.temperatures.models;
 
 import com.recruitment.temperatures.assertions.Assert;
-import com.recruitment.temperatures.temperatures.Temperature;
+import com.recruitment.temperatures.temperatures.jpa.Temperature;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

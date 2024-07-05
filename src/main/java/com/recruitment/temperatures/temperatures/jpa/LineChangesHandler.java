@@ -1,4 +1,4 @@
-package com.recruitment.temperatures.temperatures;
+package com.recruitment.temperatures.temperatures.jpa;
 
 
 import com.recruitment.temperatures.models.GitDiffLine;

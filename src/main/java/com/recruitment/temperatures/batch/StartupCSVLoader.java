@@ -4,10 +4,6 @@ import com.recruitment.temperatures.RecruitmentChallengeCSVProperties;
 import com.recruitment.temperatures.git.GitRepository;
 import com.recruitment.temperatures.models.CommitMessage;
 import com.recruitment.temperatures.models.FileName;
-import com.recruitment.temperatures.models.GitDiffLine;
-import com.recruitment.temperatures.temperatures.LineChangesHandler;
-import com.recruitment.temperatures.temperatures.TemperatureRepository;
-import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -21,7 +17,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 
 
