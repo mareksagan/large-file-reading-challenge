@@ -43,7 +43,7 @@ public class GitRepositoryTest {
 
 
     @Test
-    void headEditTests() throws IOException, GitAPIException {
+    void headEditTest() throws IOException, GitAPIException {
         String fileName = "dummy.csv";
         File csv = directory.resolve(fileName).toFile();
         String firstLine = "First line has been added";
