@@ -7,6 +7,8 @@ import com.recruitment.temperatures.models.GitDiffLine;
 import com.recruitment.temperatures.temperatures.jpa.LineChangesHandler;
 import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,7 @@ import java.util.List;
  */
 @Component
 public class ServerStartupChangeDetector {
+    private static final Logger log = LoggerFactory.getLogger(ServerStartupChangeDetector.class);
     private static final String CHANGE_DETECTION_COMMIT_MESSAGE = "Server startup (Change Detection)";
     private final GitRepository gitRepository;
     private final RecruitmentChallengeCSVProperties recruitmentChallengeCSVProperties;
@@ -34,6 +37,7 @@ public class ServerStartupChangeDetector {
     public void sync() throws GitAPIException, IOException {
         Status status = gitRepository.status();
         if (status.getModified().contains(recruitmentChallengeCSVProperties.getFileName())) {
+            log.info("CSV file was modified while the server was down, triggering synchronization");
             gitRepository.commit(new FileName(recruitmentChallengeCSVProperties.getFileName()), new CommitMessage(CHANGE_DETECTION_COMMIT_MESSAGE));
             List<String> lines = gitRepository.headEdits(new FileName(recruitmentChallengeCSVProperties.getFileName()));
             lines.forEach(val -> lineChangesHandler.handle(new GitDiffLine(val)));

@@ -11,6 +11,8 @@ import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectReader;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.treewalk.CanonicalTreeParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
@@ -25,6 +27,7 @@ import java.util.function.Predicate;
  */
 @Component
 public class GitRepositoryImpl implements GitRepository {
+    private static final Logger log = LoggerFactory.getLogger(GitRepositoryImpl.class);
     private final Git git;
 
     public GitRepositoryImpl(Git git) {
@@ -34,6 +37,7 @@ public class GitRepositoryImpl implements GitRepository {
 
     @Override
     public void commit(FileName fileName, CommitMessage message) throws GitAPIException {
+        log.debug("Committing latest changes for file {}",fileName);
         git.add().addFilepattern(fileName.fileName()).call();
         git.commit().setMessage(message.message()).call();
     }
@@ -69,6 +73,7 @@ public class GitRepositoryImpl implements GitRepository {
         ObjectId oldHead = repository.resolve("HEAD~1^{tree}");
         // Obtaining the tree of the head commit
         ObjectId newHead = repository.resolve("HEAD^{tree}");
+        log.debug("Lookup line difference between {} and {}", oldHead, newHead);
         ObjectReader reader = repository.newObjectReader();
         CanonicalTreeParser oldTreeIter = new CanonicalTreeParser();
         oldTreeIter.reset(reader, oldHead);

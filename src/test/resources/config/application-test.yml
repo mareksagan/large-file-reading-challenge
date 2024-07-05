@@ -4,7 +4,7 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
-    username: jhipsterSampleApplication
+    username: kyotu
     hikari:
       maximum-pool-size: 2
     url: jdbc:tc:postgresql:16.2:///kyotu?TC_TMPFS=/testtmpfs:rw

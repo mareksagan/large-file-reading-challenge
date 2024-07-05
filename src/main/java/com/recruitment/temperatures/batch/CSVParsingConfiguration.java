@@ -4,6 +4,8 @@ import com.recruitment.temperatures.RecruitmentChallengeCSVProperties;
 import com.recruitment.temperatures.models.TemperatureModel;
 import com.recruitment.temperatures.temperatures.jpa.Temperature;
 import com.recruitment.temperatures.temperatures.jpa.TemperatureRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -31,6 +33,7 @@ import java.text.SimpleDateFormat;
  */
 @Configuration
 public class CSVParsingConfiguration {
+    private static final Logger log = LoggerFactory.getLogger(CSVParsingConfiguration.class);
     private final RecruitmentChallengeCSVProperties recruitmentChallengeCSVProperties;
     private final DataSource dataSource;
     static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -44,6 +47,7 @@ public class CSVParsingConfiguration {
 
     @Bean
     public FlatFileItemReader<TemperatureModel> reader() {
+        log.info("Reading given CSV file in batch");
         FlatFileItemReader<TemperatureModel> reader = new FlatFileItemReader<>();
         reader.setResource(new FileSystemResource(recruitmentChallengeCSVProperties.getDirectory() + "/" + recruitmentChallengeCSVProperties.getFileName()));
         reader.setLinesToSkip(0);
