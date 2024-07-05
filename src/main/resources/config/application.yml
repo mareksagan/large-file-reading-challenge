@@ -1,0 +1,29 @@
+server:
+  port: 8081
+recruitment:
+  challenge:
+    csv:
+      directory: ${project.basedir}\inputs
+      fileName: example_file.csv
+      delimiter: ;
+
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+    password: ''
+    driver-class-name: org.postgresql.Driver
+    username: marek
+    url: jdbc:postgresql://localhost:5432/marek
+    type: com.zaxxer.hikari.HikariDataSource
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always

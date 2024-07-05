@@ -1,0 +1,25 @@
+spring:
+  main:
+    banner-mode: 'off'
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    username: jhipsterSampleApplication
+    hikari:
+      maximum-pool-size: 2
+    url: jdbc:tc:postgresql:16.2:///marek?TC_TMPFS=/testtmpfs:rw
+    password: ''
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+recruitment:
+  challenge:
+    csv:
+      directory: ${project.basedir}\inputs
+      fileName: example_file.csv
+      delimiter: ;
+server:
+  port: 0
+
