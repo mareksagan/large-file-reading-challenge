@@ -46,7 +46,7 @@ This will include:
 - Developing business logic for querying the appropriate results for the user
 - Adding tests for global business rules to ensure comprehensive code coverage
 
-### Proposed Solution
+### Proposed solution
 
 The following diagram represents the proposed technical architecture of the solution. It consists of the following components:
 
@@ -57,4 +57,10 @@ The following diagram represents the proposed technical architecture of the solu
 - **Database**: PostgreSQL for managing data, regardless of the dataset size. PostgreSQL is free, open-source, and highly extensible. It supports features for managing large volumes of data, such as partitioning for big tables. Special PostgreSQL modules will be installed to boost database performance, and the server will be hosted in a Docker container.
 - **Testing**: Unit/integration tests based on JHipster Lite prototypes, including dependencies such as JUnit, Mockito, and Cucumber.
 
-![img.png](documentation/arch.png)
+### Architecture overview
+![Architecture overview](documentation/architecture.png)
+
+### Database schema overview
+![Database schema overview](documentation/db_schema.png)
+- **temperatures**: Table storing the temperatures with updates
+- **batch_***: Spring Batch related tables
